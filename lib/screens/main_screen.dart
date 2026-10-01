@@ -14,11 +14,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _indiceAtual = 0;
 
-  // Lista dos ecrãs que vão aparecer em cada aba
+  // Lista dos ecrãs corrigida: agora chama as tuas tabs reais
   final List<Widget> _telas = [
-    const Center(child: Text('Ecrã de Início (Resumo)')), // Substituir por InicioTab() quando implementares
-    const Center(child: Text('Ecrã de Dietas')),         // Substituir por DietasTab()
-    const Center(child: Text('Ecrã de Treinos')),        // Substituir por TreinosTab()
+    const InicioTab(),
+    const DietasTab(),
+    const TreinosTab(),
     const PerfilTab(),
   ];
 

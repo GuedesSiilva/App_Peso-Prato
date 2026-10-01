@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../auth/login_screen.dart';
+import 'editar_perfil_screen.dart'; // Importação do novo ecrã
 
 class PerfilTab extends StatelessWidget {
   const PerfilTab({super.key});
@@ -19,7 +20,7 @@ class PerfilTab extends StatelessWidget {
         children: [
           const CircleAvatar(
             radius: 60,
-            backgroundImage: AssetImage('assets/images/Logo.png'), // Podes usar um avatar genérico aqui
+            backgroundImage: AssetImage('assets/images/Logo.png'),
             backgroundColor: Colors.transparent,
           ),
           const SizedBox(height: 16),
@@ -39,9 +40,10 @@ class PerfilTab extends StatelessWidget {
           const SizedBox(height: 32),
           ElevatedButton.icon(
             onPressed: () {
-              // Aqui chamarás o ecrã de Editar Perfil
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Funcionalidade de edição em desenvolvimento')),
+              // Navegação real para o EditarPerfilScreen
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const EditarPerfilScreen()),
               );
             },
             icon: const Icon(Icons.edit, color: Colors.black),
