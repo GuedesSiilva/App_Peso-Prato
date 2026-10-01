@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'recupera_senha_screen.dart';
 import '../main_screen.dart';
 import 'cadastro_screen.dart';
 
@@ -46,10 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth:250,
-                      maxHeight: 250,
-                    ),
+                    constraints: BoxConstraints(maxWidth: 250, maxHeight: 250),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0),
                       child: Image.asset(
@@ -75,8 +73,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       border: OutlineInputBorder(),
                     ),
                     validator: (value) {
-                      if (value == null || value.isEmpty) return 'Por favor, insira seu e-mail';
-                      if (!value.contains('@')) return 'Insira um e-mail válido';
+                      if (value == null || value.isEmpty)
+                        return 'Por favor, insira seu e-mail';
+                      if (!value.contains('@'))
+                        return 'Insira um e-mail válido';
                       return null;
                     },
                   ),
@@ -91,7 +91,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       border: const OutlineInputBorder(),
                       suffixIcon: IconButton(
                         icon: Icon(
-                          _ocultarSenha ? Icons.visibility : Icons.visibility_off,
+                          _ocultarSenha
+                              ? Icons.visibility
+                              : Icons.visibility_off,
                         ),
                         onPressed: () {
                           setState(() {
@@ -101,17 +103,28 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     validator: (value) {
-                      if (value == null || value.isEmpty) return 'Por favor, insira sua senha';
-                      if (value.length < 6) return 'A senha deve ter pelo menos 6 caracteres';
+                      if (value == null || value.isEmpty)
+                        return 'Por favor, insira sua senha';
+                      if (value.length < 6)
+                        return 'A senha deve ter pelo menos 6 caracteres';
                       return null;
                     },
                   ),
-                  
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: () {}, // Será a Recuperação de Senha
-                      child: const Text('Esqueci minha senha', style: TextStyle(color: Colors.greenAccent)),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RecuperaSenha(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Esqueci minha senha',
+                        style: TextStyle(color: Colors.greenAccent),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -120,12 +133,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: _realizarLogin,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.greenAccent,
-                      foregroundColor: Colors.black, // Texto preto no botão verde
+                      foregroundColor:
+                          Colors.black, // Texto preto no botão verde
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
                     child: const Text(
                       'ENTRAR',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -134,14 +151,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const CadastroScreen()),
+                        MaterialPageRoute(
+                          builder: (context) => const CadastroScreen(),
+                        ),
                       );
                     },
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
-                      side: const BorderSide(color: Colors.greenAccent), // Borda verde
+                      side: const BorderSide(
+                        color: Colors.greenAccent,
+                      ), // Borda verde
                     ),
-                    child: const Text('Não tem uma conta? Cadastre-se', style: TextStyle(color: Colors.greenAccent)),
+                    child: const Text(
+                      'Não tem uma conta? Cadastre-se',
+                      style: TextStyle(color: Colors.greenAccent),
+                    ),
                   ),
                 ],
               ),
